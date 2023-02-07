@@ -1,0 +1,52 @@
+{
+  "name": "consumer",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.27.2",
+    "prop-types": "15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
+    "react-router": "^6.4.2",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "5.0.1",
+    "spectre.css": "^0.5.9"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env CI=true react-scripts test",
+    "eject": "react-scripts eject",
+    "test:pact": "cross-env CI=true react-scripts test --testTimeout 30000 ../__tests__/contract/Consumer.spec.js --runInBand --setupFiles ./src/__tests__/helpers/pactSetup.js",
+    "test:publish": "cross-env CI=true react-scripts test --testTimeout 30000 ../__tests__/helpers/publish.js",
+    "test:publish2": "pact-broker publish ./pacts --consumer-app-version=1.0.0 --broker-base-url=https://ars.pactflow.io --broker-token=apiIl2S6YCZuOE0SPM2YbQ",
+    "test:publish3": "pact-broker publish ./pacts --consumer-app-version=\"$(npx absolute-version)\" --auto-detect-version-properties --broker-base-url=https://ars.pactflow.io --broker-token=apiIl2S6YCZuOE0SPM2YbQ --testTimeout 30000"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
+    "@pact-foundation/pact": "^10.1.4",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3"
+  }
+}
