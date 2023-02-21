@@ -45,7 +45,7 @@ fake_ci: .env
 
 publish_pacts: .env
 	@echo "\n========== STAGE: publish pacts ==========\n"
-	@"${PACT_CLI}" publish ${PWD}/pacts --consumer-app-version ${GIT_COMMIT} --branch ${GIT_BRANCH}
+	@"${PACT_CLI}" publish ${PWD}/pacts/ --consumer-app-version ${GIT_COMMIT} --branch ${GIT_BRANCH} --broker-base-url https://ars.pactflow.io --broker-token NGJ8OTH1mmrN0yeV1lJY-A
 
 ## =====================
 ## Build/test tasks
@@ -73,6 +73,8 @@ can_i_deploy: .env
 	  --pacticipant ${PACTICIPANT} \
 	  --version ${GIT_COMMIT} \
 	  --to-environment ${ENVIRONMENT} \
+	  --broker-base-url https://ars.pactflow.io \
+	  --broker-token NGJ8OTH1mmrN0yeV1lJY-A \
 	  --retry-while-unknown 30 \
 	  --retry-interval 10
 

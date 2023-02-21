@@ -17,10 +17,11 @@
     "build": "react-scripts build",
     "test": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "test:pact": "cross-env CI=true react-scripts test --testTimeout 30000 ../__tests__/contract/Consumer.spec.js --runInBand --setupFiles ./src/__tests__/helpers/pactSetup.js",
-    "test:publish": "cross-env CI=true react-scripts test --testTimeout 30000 ../__tests__/helpers/publish.js",
-    "test:publish2": "pact-broker publish ./pacts --consumer-app-version=1.0.0 --broker-base-url=https://ars.pactflow.io --broker-token=apiIl2S6YCZuOE0SPM2YbQ",
-    "test:publish3": "pact-broker publish ./pacts --consumer-app-version=\"$(npx absolute-version)\" --auto-detect-version-properties --broker-base-url=https://ars.pactflow.io --broker-token=apiIl2S6YCZuOE0SPM2YbQ --testTimeout 30000"
+    "test:pact": "cross-env CI=true react-scripts test --colors --testTimeout 30000 ../__tests__/contract/Consumer.spec.js --runInBand --setupFiles ./src/__tests__/helpers/pactSetup.js",
+    "test:publish": "cross-env CI=true react-scripts test --colors --testTimeout 30000 ../__tests__/helpers/publish.js",
+    "test:publish1": "pact-broker publish ../pacts/ReactPactConsumer-ExpressPactProvider.json --consumer-app-version 1.0.0 --branch main --broker-base-url https://ars.pactflow.io --broker-token NGJ8OTH1mmrN0yeV1lJY-A",
+    "test:publish2": "pact-broker publish ../pacts --consumer-app-version=1.0.0 --broker-base-url=https://ars.pactflow.io --broker-token=NGJ8OTH1mmrN0yeV1lJY-A",
+    "test:publish3": "pact-broker publish ../pacts --consumer-app-version=\"$(npx absolute-version)\" --auto-detect-version-properties --broker-base-url=https://ars.pactflow.io --broker-token=NGJ8OTH1mmrN0yeV1lJY-A"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
     "@pact-foundation/pact": "^10.1.4",
+    "@pact-foundation/pact-node": "^10.17.7",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
